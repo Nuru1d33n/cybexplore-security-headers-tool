@@ -1,6 +1,6 @@
 # CybExplore Security Headers Tool
 
-![CybExplore Logo](path/to/your/cybexplore-logo.png)
+![CybExplore Logo](assets/cybexplore-logo.png)
 
 CybExplore Security Headers Tool is a command-line application designed to analyze the HTTP security headers of any given website. This tool checks for missing or improperly configured security headers that could potentially expose the site to vulnerabilities. It also generates detailed reports in PDF format, summarizing the findings and providing recommendations for improving security.
 
@@ -51,3 +51,60 @@ To analyze a website's security headers, simply run the tool with the following 
 ```bash
 python security_headers_tool.py --url https://example.com
 ```
+
+
+## Generating PDF Report
+
+To generate a PDF report of the analysis, use the `--report` flag:
+
+```
+bash
+python security_headers_tool.py --url https://example.com --report
+
+```
+
+The report will be saved as `security_report.pdf` in the current directory.
+
+
+## Example Output
+
+When you run the tool, you can expect output like this:
+
+
+Analyzing security headers for https://example.com...
+
+Missing Headers:
+
+- Strict-Transport-Security: Enforces secure connections (HTTPS).
+- X-Frame-Options: Prevents clickjacking attacks.
+
+Present Headers:
+
+- Content-Security-Policy: default-src 'self';
+- X-Content-Type-Options: nosniff
+
+PDF report generated: security_report.pdf
+
+## Report Generation
+
+The PDF report includes:
+
+* A list of all present security headers with their values.
+* A list of missing headers along with explanations of potential risks.
+* Recommendations for securing the website.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. Ensure that your changes include appropriate tests and documentation.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE]() file for details.
+
+## Contact
+
+For more information or support, please contact:
+
+* **Name** : Nurudeen Oluwaseun Adebileje
+* **Email** : [Nuruadebileje@gmail.com]()
+* **Website** : [CybExplore](https://cybexplore.org)
