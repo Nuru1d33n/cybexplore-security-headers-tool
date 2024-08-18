@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Headers Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Security Headers Report for {{ url }}</h1>
+    
+    <h2>Security Headers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Header</th>
+                <th>Purpose</th>
+                <th>Overview</th>
+                <th>Present</th>
+                <th>Value</th>
+                <th>Recommendation</th>
+                <th>Vulnerable</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for header, info in header_info.items() %}
+            <tr>
+                <td>{{ header }}</td>
+                <td>{{ info.Purpose }}</td>
+                <td>{{ info.Overview }}</td>
+                <td>{{ 'Yes' if info.Present else 'No' }}</td>
+                <td>{{ info.Value }}</td>
+                <td>{{ info.Recommendation }}</td>
+                <td>{{ info.Vulnerable }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Technology Stack</h2>
+    <p>Technology: {{ tech_stack.Technology }}</p>
+    <ul>
+        {% for detail in tech_stack.Details %}
+        <li>{{ detail }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
