@@ -75,34 +75,59 @@
             <h2>Header Information</h2>
             <table>
                 <thead>
-                    <tr>
+                    <!--  <tr>
                         <th>Header</th>
                         <th>Value</th>
+                    </tr> -->
+                    <tr>
+                        <th>Header</th>
+                        <th>Purpose</th>
+                        <th>Overview</th>
+                        <th>Value</th>
+                        <th>Recommendation</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Iterate over header_info to populate rows -->
-                    {% for header, value in header_info.items() %}
+                    <!--  {% for header, value in header_info.items() %}
                     <tr>
                         <td>{{ header }}</td>
                         <td>{{ value }}</td>
                     </tr>
+                    {% endfor %} -->
+                    {% for header, info in header_info.items() %}
+                        <tr class="{% if info.Vulnerable == 'Yes' %}highlight{% endif %}">
+                            <td>{{ header }}</td>
+                            <td>{{ info.Purpose }}</td>
+                            <td>{{ info.Overview }}</td>
+                            <td>{{ info.Present }}</td>
+                            <td>{{ info.Value }}</td>
+                            <td>{{ info.Recommendation }}</td>
+                            <td>{{ info.Vulnerable }}</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="section">
-            <h2>Technology Stack</h2>
+            <h2>Technology Stack Detection</h2>
             <!-- List technology stack -->
-            <ul>
+            <p><strong>Technology:</strong> {{ tech_stack.technology }}</p>
+            <!--  <ul>
                 {% for tech in tech_stack %}
                 <li>{{ tech }}</li>
+                {% endfor %}
+            </ul> -->
+            <ul>
+                {% for detail in tech_stack.details %}
+                <li>{{ detail }}</li>
                 {% endfor %}
             </ul>
         </div>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
         Page Footer Information | Contact Us
-    </div>
+    </div> -->
 </body>
 </html>

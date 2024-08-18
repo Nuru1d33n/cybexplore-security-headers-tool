@@ -329,8 +329,11 @@ def generate_pdf_report(url, header_info, tech_stack):
         template = env.get_template('report.html')
 
         # Render the template with data
-        html_content = template.render(url=url, header_info=header_info, tech_stack=tech_stack)
-
+        html_content = template.render(
+            url=url,
+            header_info=header_info,
+            tech_stack=tech_stack
+        )
         # Generate PDF from HTML content
         pdf = HTML(string=html_content).write_pdf()
 
