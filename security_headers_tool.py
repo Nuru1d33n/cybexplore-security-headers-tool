@@ -336,12 +336,8 @@ def generate_pdf_report(url, header_info, tech_stack):
     with open(f'report_{url.replace("https://", "").replace("http://", "").replace("/", "_")}.pdf', 'wb') as f:
         f.write(pdf)
 
+
 if __name__ == "__main__":
     url = "http://192.168.0.156"
     check_security_headers(url)
 
-# # Usage
-# url = "http://192.168.0.156"
-# check_security_headers(url)
-
-# generate_pdf_report(url, header_info, tech_stack)
