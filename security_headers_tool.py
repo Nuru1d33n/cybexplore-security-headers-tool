@@ -159,8 +159,8 @@ def check_security_headers(url):
 
 def detect_technology(response):
     tech_stack = {
-        "Technology": "Django, PostgreSQL",
-        "Details": ["Django 4.x", "PostgreSQL 13.x", "Gunicorn"]
+        "Technology": "",
+        "Details": []
     }
 
     # Detecting Content Management Systems (CMS)
