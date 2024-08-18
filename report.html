@@ -5,49 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Headers Report</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
-        th { background-color: #f4f4f4; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+            word-break: break-word;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        thead {
+            background-color: #e0e0e0;
+        }
+        @media (max-width: 768px) {
+            table {
+                border: 0;
+            }
+            thead {
+                display: none;
+            }
+            tr {
+                display: block;
+                margin-bottom: 10px;
+            }
+            td {
+                display: block;
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border: none;
+            }
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 10px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+        }
+        .tech-stack {
+            margin: 20px 0;
+        }
+        .tech-stack ul {
+            padding-left: 20px;
+        }
+        .tech-stack li {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1>Security Headers Report for {{ url }}</h1>
-    
-    <h2>Security Headers</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Header</th>
-                <th>Purpose</th>
-                <th>Overview</th>
-                <th>Present</th>
-                <th>Value</th>
-                <th>Recommendation</th>
-                <th>Vulnerable</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for header, info in header_info.items() %}
-            <tr>
-                <td>{{ header }}</td>
-                <td>{{ info.Purpose }}</td>
-                <td>{{ info.Overview }}</td>
-                <td>{{ 'Yes' if info.Present else 'No' }}</td>
-                <td>{{ info.Value }}</td>
-                <td>{{ info.Recommendation }}</td>
-                <td>{{ info.Vulnerable }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>Security Headers Report for {{ url }}</h1>
+        
+        <h2>Security Headers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Header</th>
+                    <th>Purpose</th>
+                    <th>Overview</th>
+                    <th>Present</th>
+                    <th>Value</th>
+                    <th>Recommendation</th>
+                    <th>Vulnerable</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for header, info in header_info.items() %}
+                <tr>
+                    <td data-label="Header">{{ header }}</td>
+                    <td data-label="Purpose">{{ info.Purpose }}</td>
+                    <td data-label="Overview">{{ info.Overview }}</td>
+                    <td data-label="Present">{{ 'Yes' if info.Present else 'No' }}</td>
+                    <td data-label="Value">{{ info.Value }}</td>
+                    <td data-label="Recommendation">{{ info.Recommendation }}</td>
+                    <td data-label="Vulnerable">{{ info.Vulnerable }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <h2>Technology Stack</h2>
-    <p>Technology: {{ tech_stack.Technology }}</p>
-    <ul>
-        {% for detail in tech_stack.Details %}
-        <li>{{ detail }}</li>
-        {% endfor %}
-    </ul>
+        <h2 class="tech-stack">Technology Stack</h2>
+        <p>Technology: {{ tech_stack.Technology }}</p>
+        <ul>
+            {% for detail in tech_stack.Details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
