@@ -58,9 +58,7 @@ python security_headers_tool.py --url https://example.com
 To generate a PDF report of the analysis, use the `--report` flag:
 
 ```
-bash
 python security_headers_tool.py --url https://example.com --report
-
 ```
 
 The report will be saved as `security_report.pdf` in the current directory.
