@@ -159,8 +159,8 @@ def check_security_headers(url):
 
 def detect_technology(response):
     tech_stack = {
-        "Technology": "Unknown",
-        "Details": []
+        "Technology": "Django, PostgreSQL",
+        "Details": ["Django 4.x", "PostgreSQL 13.x", "Gunicorn"]
     }
 
     # Detecting Content Management Systems (CMS)
@@ -322,15 +322,24 @@ def detect_technology(response):
     return tech_stack
 
 def generate_pdf_report(url, header_info, tech_stack):
-    # Set up Jinja2 environment
-    env = Environment(loader=FileSystemLoader('.'))
-    template = env.get_template('report.html')
+    try:
+        # comment: 
+        # Set up Jinja2 environment
+        env = Environment(loader=FileSystemLoader('.'))
+        template = env.get_template('report.html')
 
-    # Render the template with data
-    html_content = template.render(url=url, header_info=header_info, tech_stack=tech_stack)
+        # Render the template with data
+        html_content = template.render(url=url, header_info=header_info, tech_stack=tech_stack)
 
-    # Generate PDF from HTML content
-    pdf = HTML(string=html_content).write_pdf()
+        # Generate PDF from HTML content
+        pdf = HTML(string=html_content).write_pdf()
+
+    except TemplateNotFound:
+        print("Error: Template 'report_template.html' not found.")
+
+    except Exception as e:
+        raise e
+    # end try
 
     # Save the PDF
     with open(f'report_{url.replace("https://", "").replace("http://", "").replace("/", "_")}.pdf', 'wb') as f:
@@ -338,6 +347,6 @@ def generate_pdf_report(url, header_info, tech_stack):
 
 
 if __name__ == "__main__":
-    url = "http://192.168.0.156"
+    url = "http://192.168.0.156/"
     check_security_headers(url)
 
