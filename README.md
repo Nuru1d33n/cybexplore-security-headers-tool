@@ -2,102 +2,101 @@
 
 ![CybExplore Logo](assets/cybexplore-logo.png)
 
-CybExplore Security Headers Tool is a command-line application designed to analyze the HTTP security headers of any given website. This tool checks for missing or improperly configured security headers that could potentially expose the site to vulnerabilities. It also generates detailed reports in PDF format, summarizing the findings and providing recommendations for improving security.
+## Overview
+
+The **CybExplore Security Headers Tool** is a comprehensive, automated web application scanner designed to help developers and security professionals identify security vulnerabilities in web applications. The tool inspects HTTP headers, detects CMSs, scans for open ports, checks SSL/TLS certificates, and much more, ensuring your web application is secure against common vulnerabilities.
 
 ## Features
 
-- **HTTP Headers Analysis**: Scans the security headers of a website to check for vulnerabilities.
-- **Report Generation**: Automatically generates a comprehensive PDF report that details the findings.
-- **User-Friendly**: Simple and easy to use from the command line.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Example Output](#example-output)
-- [Report Generation](#report-generation)
-- [Contributing](#contributing)
-- [License](#license)
+* **HTTP Header Analysis** : Fetches and displays HTTP headers from the target website.
+* **Server Information Extraction** : Identifies the server software being used.
+* **CMS Detection** : Detects common CMS platforms like WordPress, Joomla, Drupal, Magento, and Shopify.
+* **Frontend Framework Detection** : Identifies JavaScript frameworks like React, Angular, Vue.js, and Ember.
+* **SSL/TLS Certificate Validation** : Validates SSL/TLS certificates and reports on their validity.
+* **Security Headers Check** : Identifies missing or misconfigured security headers that could expose the site to vulnerabilities.
+* **Open Ports Scan** : Scans for common open ports on the target server.
+* **Exploit and Mitigation Suggestions** : Provides basic suggestions on how to exploit and mitigate detected vulnerabilities.
+* **Custom User-Agent Support** : Allows the use of a custom User-Agent string for requests.
+* **Result Logging** : Saves scan results to a log file with a timestamp.
 
 ## Installation
 
-### Prerequisites
+1. **Clone the repository:**
 
-- Python 3.6 or later
-- `pip` (Python package installer)
-
-### Setup
-
-1. Clone the repository:
-
-   ```bash
-   git clone git@github.com:Nuru1d33n/cybexplore-security-headers-tool.git
    ```
-2. Navigate to the project directory:
-
-   ```bash
+   git clone https://github.com/Nuru1d33n/cybexplore-security-headers-tool.git
    cd cybexplore-security-headers-tool
-   ```
-3. Install the required dependencies:
 
-   ```bash
-   pip install -r requirements.txt
+   ```
+
+   1. **Install dependencies:**
+      Ensure you have Python 3.x installed on your system. Install the required Python libraries using pip:
+
+      ```
+      pip install -r requirements.txt
+
+      ```
+2. **Run the script:**
+   You can now run the web scraping script:
+
+   ```
+   python web_scraper.py --user-agent "YourCustomUserAgent" https://example.com
+
    ```
 
 ## Usage
 
-To analyze a website's security headers, simply run the tool with the following command:
+### Command-Line Arguments
 
-```bash
-python security_headers_tool.py --url https://example.com
-```
+* **Targets** : URL(s) to scan. This can be a single URL or a comma-separated list of URLs.
+* **User-Agent** : (Optional) Custom User-Agent string. If not provided, it defaults to `'Mozilla/5.0'`.
 
+### Example
 
-## Generating PDF Report
-
-To generate a PDF report of the analysis, use the `--report` flag:
+To scan a single website:
 
 ```
-python security_headers_tool.py --url https://example.com --report
+python web_scraper.py https://example.com
+
 ```
 
-The report will be saved as `security_report.pdf` in the current directory.
+To scan multiple websites:
 
+```
+python web_scraper.py https://example1.com,https://example2.com
 
-## Example Output
+```
 
-When you run the tool, you can expect output like this:
+To scan websites listed in a file:
 
+```
+python web_scraper.py targets.txt
 
-Analyzing security headers for https://example.com...
+```
 
-Missing Headers:
+### Log File
 
-- Strict-Transport-Security: Enforces secure connections (HTTPS).
-- X-Frame-Options: Prevents clickjacking attacks.
+Scan results are automatically saved to a log file in the format `scan_results_YYYYMMDD_HHMMSS.log`.
 
-Present Headers:
+## Output
 
-- Content-Security-Policy: default-src 'self';
-- X-Content-Type-Options: nosniff
+The output includes:
 
-PDF report generated: security_report.pdf
-
-## Report Generation
-
-The PDF report includes:
-
-* A list of all present security headers with their values.
-* A list of missing headers along with explanations of potential risks.
-* Recommendations for securing the website.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. Ensure that your changes include appropriate tests and documentation.
+* **HTTP Headers** : Displays all HTTP headers returned by the target server.
+* **Server Information** : Shows the server software being used.
+* **CMS and Framework Detection** : Lists detected CMS platforms and JavaScript frameworks.
+* **SSL/TLS Certificate Information** : Details about the SSL certificate, including validity dates.
+* **Security Headers Check** : Lists any missing or misconfigured security headers.
+* **Open Ports** : Lists any detected open ports on the server.
+* **Exploitation and Mitigation Suggestions** : Provides basic exploitation methods and how to mitigate the vulnerabilities.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE]() file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+If you'd like to contribute to this project, please fork the repository, create a new branch, and submit a pull request. We welcome all contributions that can help improve the functionality and security of this tool.
 
 ## Contact
 
