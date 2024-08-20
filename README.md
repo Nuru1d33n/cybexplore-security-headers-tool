@@ -60,7 +60,6 @@ To scan multiple websites:
 
 ```
 python web_scraper.py https://example1.com,https://example2.com
-
 ```
 
 To scan websites listed in a file:
