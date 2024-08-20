@@ -26,7 +26,6 @@ The **CybExplore Security Headers Tool** is a comprehensive, automated web appli
    ```
    git clone https://github.com/Nuru1d33n/cybexplore-security-headers-tool.git
    cd cybexplore-security-headers-tool
-
    ```
 
    1. **Install dependencies:**
@@ -34,14 +33,12 @@ The **CybExplore Security Headers Tool** is a comprehensive, automated web appli
 
       ```
       pip install -r requirements.txt
-
       ```
 2. **Run the script:**
    You can now run the web scraping script:
 
    ```
    python web_scraper.py --user-agent "YourCustomUserAgent" https://example.com
-
    ```
 
 ## Usage
@@ -57,7 +54,6 @@ To scan a single website:
 
 ```
 python web_scraper.py https://example.com
-
 ```
 
 To scan multiple websites:
@@ -71,7 +67,6 @@ To scan websites listed in a file:
 
 ```
 python web_scraper.py targets.txt
-
 ```
 
 ### Log File
